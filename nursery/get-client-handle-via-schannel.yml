@@ -2,8 +2,11 @@ rule:
   meta:
     name: get client handle via SChannel
     namespace: data-manipulation/encryption
-    author: matthew.williams@fireeye.com
-    scope: function
+    authors:
+      - matthew.williams@mandiant.com
+    scopes:
+      static: function
+      dynamic: span of calls
     att&ck:
       - Defense Evasion::Obfuscated Files or Information [T1027]
     references:
@@ -15,4 +18,4 @@ rule:
       - match: get outbound credentials handle via CredSSP
       - number: 4 = CredsspSchannelCreds
       - optional:
-        - string: Microsoft Unified Security Protocol Provider
+        - string: "Microsoft Unified Security Protocol Provider"

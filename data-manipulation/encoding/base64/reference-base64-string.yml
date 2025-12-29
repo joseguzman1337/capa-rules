@@ -2,11 +2,16 @@ rule:
   meta:
     name: reference Base64 string
     namespace: data-manipulation/encoding/base64
-    author: moritz.raabe@fireeye.com
-    scope: file
+    authors:
+      - moritz.raabe@mandiant.com
+    scopes:
+      static: file
+      dynamic: file
+    att&ck:
+      - Defense Evasion::Obfuscated Files or Information [T1027]
     mbc:
-      - Data Manipulation::Encoding::Base64 [C0026.001]
-      - Data Manipulation::Check String [C0019]
+      - Data::Encode Data::Base64 [C0026.001]
+      - Data::Check String [C0019]
     examples:
       - BFB9B5391A13D0AFD787E87AB90F14F5
       - 074072B261FC27B65C72671F13510C05

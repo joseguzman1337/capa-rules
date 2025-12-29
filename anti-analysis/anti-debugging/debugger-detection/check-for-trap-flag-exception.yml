@@ -2,8 +2,11 @@ rule:
   meta:
     name: check for trap flag exception
     namespace: anti-analysis/anti-debugging/debugger-detection
-    author: michael.hunhoff@fireeye.com
-    scope: basic block
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: basic block
+      dynamic: unsupported  # requires mnemonic features
     mbc:
       - Anti-Behavioral Analysis::Debugger Detection [B0001]
     references:
@@ -26,9 +29,9 @@ rule:
           - mnemonic: popfq
       - or:
         - description: set trap flag
-        - and:
+        - instruction:
           - mnemonic: or
           - number: 0x100
-        - and:
+        - instruction:
           - mnemonic: bts
           - number: 0x8

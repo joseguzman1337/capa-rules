@@ -2,8 +2,11 @@ rule:
   meta:
     name: initialize WinHTTP library
     namespace: communication/http
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: call
     mbc:
       - Communication::HTTP Communication::WinHTTP [C0002.008]
     examples:

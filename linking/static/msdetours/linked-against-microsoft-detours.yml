@@ -2,8 +2,11 @@ rule:
   meta:
     name: linked against Microsoft Detours
     namespace: linking/static/msdetours
-    author: moritz.raabe@fireeye.com
-    scope: file
+    authors:
+      - moritz.raabe@mandiant.com
+    scopes:
+      static: file
+      dynamic: file
     att&ck:
       - Defense Evasion::Hijack Execution Flow [T1574]
     references:

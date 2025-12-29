@@ -2,9 +2,12 @@ rule:
   meta:
     name: receive data
     namespace: communication
-    author: william.ballenthin@fireeye.com
+    authors:
+      - william.ballenthin@mandiant.com
     description: all known techniques for receiving data from a potential C2 server
-    scope: function
+    scopes:
+      static: function
+      dynamic: span of calls
     mbc:
       - Command and Control::C2 Communication::Receive Data [B0030.002]
     examples:
@@ -13,4 +16,4 @@ rule:
     - or:
       - match: receive data on socket
       - match: read data from Internet
-      - match: download URL to file
+      - match: download URL

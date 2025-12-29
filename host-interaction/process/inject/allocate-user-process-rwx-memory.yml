@@ -2,8 +2,11 @@ rule:
   meta:
     name: allocate user process RWX memory
     namespace: host-interaction/process/inject
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: span of calls
     att&ck:
       - Defense Evasion::Process Injection [T1055]
     examples:
@@ -11,7 +14,7 @@ rule:
   features:
     - and:
       - match: attach user process memory
-      - match: allocate RWX memory
+      - match: allocate or change RWX memory
       - number: 0xFFFFFFFF = NtCurrentProcess()
       - optional:
         - match: find process by PID

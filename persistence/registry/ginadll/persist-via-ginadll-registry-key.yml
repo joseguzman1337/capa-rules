@@ -2,8 +2,11 @@ rule:
   meta:
     name: persist via GinaDLL registry key
     namespace: persistence/registry/ginadll
-    author: michael.hunhoff@fireye.com
-    scope: function
+    authors:
+      - michael.hunhoff@fireye.com
+    scopes:
+      static: function
+      dynamic: span of calls
     att&ck:
       - Persistence::Event Triggered Execution [T1546]
     examples:
@@ -11,9 +14,7 @@ rule:
   features:
     - and:
       - or:
-        - or:
-          - match: set registry value
-        - or:
-          - number: 0x80000002 = HKEY_LOCAL_MACHINE
+        - match: set registry value
+        - number: 0x80000002 = HKEY_LOCAL_MACHINE
       - string: /SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon/i
-      - string: GinaDLL
+      - string: /GinaDLL/i

@@ -2,8 +2,11 @@ rule:
   meta:
     name: log keystrokes via application hook
     namespace: collection/keylog
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: basic block
+      dynamic: call
     att&ck:
       - Collection::Input Capture::Keylogging [T1056.001]
     mbc:

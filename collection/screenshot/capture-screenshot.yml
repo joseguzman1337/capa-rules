@@ -2,11 +2,13 @@ rule:
   meta:
     name: capture screenshot
     namespace: collection/screenshot
-    author: 
-      - moritz.raabe@fireeye.com
+    authors:
+      - moritz.raabe@mandiant.com
       - "@_re_fox"
-      - michael.hunhoff@fireeye.com
-    scope: function
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: span of calls
     att&ck:
       - Collection::Screen Capture [T1113]
     mbc:
@@ -22,8 +24,8 @@ rule:
           - api: user32.GetWindowDC
           - api: user32.GetDC
           - and:
-            - api: gdi32.CreateDCA
-            - string: DISPLAY
+            - api: gdi32.CreateDC
+            - string: "DISPLAY"
         - or:
           - api: gdi32.BitBlt
           - api: gdi32.GetDIBits
@@ -31,9 +33,13 @@ rule:
         - api: gdi32.CreateCompatibleBitmap
         - optional:
           - or:
-            - api: user32.GetSystemMetrics  # fetch screen dimensions
-            - api: user32.GetDesktopWindow  # get entire desktop
+            - api: user32.GetSystemMetrics = fetch screen dimensions
+            - api: user32.GetDesktopWindow = get entire desktop
       - basic block:
         - and:
           - api: BitBlt
           - characteristic: tight loop
+      - call:
+        - and:
+          - api: BitBlt
+      - api: System.Drawing.Graphics::CopyFromScreen

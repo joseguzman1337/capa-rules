@@ -2,10 +2,13 @@ rule:
   meta:
     name: query service status
     namespace: host-interaction/service
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: call
     att&ck:
-      - Discovery::System Information Discovery [T1082]
+      - Discovery::System Service Discovery [T1007]
     examples:
       - 9DC209F66DA77858E362E624D0BE86B3:0x403C70
   features:

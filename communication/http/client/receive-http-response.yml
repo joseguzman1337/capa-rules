@@ -2,8 +2,11 @@ rule:
   meta:
     name: receive HTTP response
     namespace: communication/http/client
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - mehunhoff@google.com
+    scopes:
+      static: function
+      dynamic: span of calls
     mbc:
       - Communication::HTTP Communication::Get Response [C0002.017]
     examples:
@@ -15,3 +18,8 @@ rule:
         - api: winhttp.WinHttpReadData
         - optional:
           - api: winhttp.WinHttpQueryDataAvailable
+      - and:
+        - format: dotnet
+        - or:
+          - api: System.Net.WebRequest::GetResponse
+          - class: System.Net.Http.HttpResponseMessage

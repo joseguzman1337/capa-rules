@@ -2,8 +2,11 @@ rule:
   meta:
     name: reference anti-VM strings targeting VirtualBox
     namespace: anti-analysis/anti-vm/vm-detection
-    author: michael.hunhoff@fireeye.com
-    scope: file
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: file
+      dynamic: file
     att&ck:
       - Defense Evasion::Virtualization/Sandbox Evasion::System Checks [T1497.001]
     mbc:
@@ -22,38 +25,36 @@ rule:
       - string: /HARDWARE\\ACPI\\FADT\\VBOX__/i
       - string: /HARDWARE\\ACPI\\RSDT\\VBOX__/i
       - string: /SOFTWARE\\Oracle\\VirtualBox Guest Additions/i
-      - string: /SYSTEM\\ControlSet001\\Services\\VBoxGuest/i
-      - string: /SYSTEM\\ControlSet001\\Services\\VBoxMouse/i
-      - string: /SYSTEM\\ControlSet001\\Services\\VBoxService/i
-      - string: /SYSTEM\\ControlSet001\\Services\\VBoxSF/i
-      - string: /SYSTEM\\ControlSet001\\Services\\VBoxVideo/i
-      - string: /VBoxMouse.sys/i
-      - string: /VBoxGuest.sys/i
-      - string: /VBoxSF.sys/i
-      - string: /VBoxVideo.sys/i
-      - string: /vboxdisp.dll/i
-      - string: /vboxhook.dll/i
-      - string: /vboxmrxnp.dll/i
-      - string: /vboxogl.dll/i
-      - string: /vboxoglarrayspu.dll/i
-      - string: /vboxoglcrutil.dll/i
-      - string: /vboxoglerrorspu.dll/i
-      - string: /vboxoglfeedbackspu.dll/i
-      - string: /vboxoglpackspu.dll/i
-      - string: /vboxoglpassthroughspu.dll/i
-      - string: /vboxservice.exe/i
-      - string: /vboxtray.exe/i
-      - string: /VBoxControl.exe/i
+      - string: /SYSTEM\\(ControlSet\d{3}|CurrentControlSet)\\Services\\VBoxGuest/i
+      - string: /SYSTEM\\(ControlSet\d{3}|CurrentControlSet)\\Services\\VBoxMouse/i
+      - string: /SYSTEM\\(ControlSet\d{3}|CurrentControlSet)\\Services\\VBoxService/i
+      - string: /SYSTEM\\(ControlSet\d{3}|CurrentControlSet)\\Services\\VBoxSF/i
+      - string: /SYSTEM\\(ControlSet\d{3}|CurrentControlSet)\\Services\\VBoxVideo/i
+      - string: /VBoxMouse\.sys/i
+      - string: /VBoxGuest\.sys/i
+      - string: /VBoxSF\.sys/i
+      - string: /VBoxVideo\.sys/i
+      - string: /vboxdisp\.dll/i
+      - string: /vboxhook\.dll/i
+      - string: /vboxmrxnp\.dll/i
+      - string: /vboxogl\.dll/i
+      - string: /vboxoglarrayspu\.dll/i
+      - string: /vboxoglcrutil\.dll/i
+      - string: /vboxoglerrorspu\.dll/i
+      - string: /vboxoglfeedbackspu\.dll/i
+      - string: /vboxoglpackspu\.dll/i
+      - string: /vboxoglpassthroughspu\.dll/i
+      - string: /vboxservice\.exe/i
+      - string: /vboxtray\.exe/i
+      - string: /VBoxControl\.exe/i
       - string: /oracle\\virtualbox guest additions\\/i
-      - string: /\\\\.\\VBoxMiniRdrDN/i
-      - string: /\\\\.\\VBoxGuest/i
-      - string: /\\\\.\\pipe\\VBoxMiniRdDN/i
-      - string: /\\\\.\\VBoxTrayIPC/i
-      - string: /\\\\.\\pipe\\VBoxTrayIPC/i
+      - string: /\\\\\.\\VBoxMiniRdrDN/i
+      - string: /\\\\\.\\VBoxGuest/i
+      - string: /\\\\\.\\pipe\\VBoxMiniRdDN/i
+      - string: /\\\\\.\\VBoxTrayIPC/i
+      - string: /\\\\\.\\pipe\\VBoxTrayIPC/i
       - string: /VBoxTrayToolWndClass/i
       - string: /VBoxTrayToolWnd/i
-      - string: /vboxservice.exe/i
-      - string: /vboxtray.exe/i
       - string: /vboxvideo/i
       - string: /VBoxVideoW8/i
       - string: /VBoxWddm/i

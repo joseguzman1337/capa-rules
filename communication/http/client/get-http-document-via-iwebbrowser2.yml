@@ -2,14 +2,18 @@ rule:
   meta:
     name: get HTTP document via IWebBrowser2
     namespace: communication/http/client
-    author: matthew.williams@fireeye.com
-    scope: function
+    authors:
+      - matthew.williams@mandiant.com
+    scopes:
+      static: function
+      dynamic: unsupported  # requires characteristic, offset features
     mbc:
       - Communication::HTTP Communication::Get Response [C0002.017]
       - Communication::HTTP Communication::IWebBrowser [C0002.010]
+    references:
+      - https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa752127(v%3Dvs.85)
     examples:
       - 395EB0DDD99D2C9E37B6D0B73485EE9C:0x402000
-      # https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa752127(v%3Dvs.85)
   features:
     - and:
       - api: oleaut32.SysAllocString

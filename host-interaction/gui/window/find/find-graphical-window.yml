@@ -2,8 +2,11 @@ rule:
   meta:
     name: find graphical window
     namespace: host-interaction/gui/window/find
-    author: moritz.raabe@fireeye.com
-    scope: function
+    authors:
+      - moritz.raabe@mandiant.com
+    scopes:
+      static: instruction
+      dynamic: call
     att&ck:
       - Discovery::Application Window Discovery [T1010]
     examples:

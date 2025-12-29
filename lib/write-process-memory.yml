@@ -1,9 +1,12 @@
 rule:
   meta:
     name: write process memory
-    author: moritz.raabe@fireeye.com
+    authors:
+      - moritz.raabe@mandiant.com
     lib: true
-    scope: function
+    scopes:
+      static: instruction
+      dynamic: call
     att&ck:
       - Defense Evasion::Process Injection [T1055]
     examples:

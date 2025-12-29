@@ -2,8 +2,11 @@ rule:
   meta:
     name: reference WMI statements
     namespace: collection/database/wmi
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: call
     att&ck:
       - Collection::Data from Information Repositories [T1213]
     examples:

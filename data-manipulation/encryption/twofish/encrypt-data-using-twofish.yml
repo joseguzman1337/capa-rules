@@ -2,8 +2,11 @@ rule:
   meta:
     name: encrypt data using twofish
     namespace: data-manipulation/encryption/twofish
-    author: "@_re_fox"
-    scope: basic block
+    authors:
+      - "@_re_fox"
+    scopes:
+      static: basic block
+      dynamic: unsupported  # requires bytes features
     att&ck:
       - Defense Evasion::Obfuscated Files or Information [T1027]
     mbc:

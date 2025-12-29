@@ -1,9 +1,12 @@
 rule:
   meta:
-    name: check for windows sandbox via dns suffix
+    name: check for Windows sandbox via dns suffix
     namespace: anti-analysis/anti-vm/vm-detection
-    author: "@_re_fox"
-    scope: function
+    authors:
+      - "@_re_fox"
+    scopes:
+      static: function
+      dynamic: unsupported  # requires offset features
     att&ck:
       - Defense Evasion::Virtualization/Sandbox Evasion::System Checks [T1497.001]
     mbc:
@@ -15,6 +18,6 @@ rule:
   features:
     - and:
       - api: GetAdaptersAddresses
-      - string: mshome.net
+      - string: "mshome.net"
       - offset: 0x38 = DnsSuffix
       - match: contain loop

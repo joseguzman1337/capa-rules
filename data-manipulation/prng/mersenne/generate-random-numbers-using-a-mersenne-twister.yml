@@ -2,10 +2,13 @@ rule:
   meta:
     name: generate random numbers using a Mersenne Twister
     namespace: data-manipulation/prng/mersenne
-    author: moritz.raabe@fireeye.com
-    scope: function
+    authors:
+      - moritz.raabe@mandiant.com
+    scopes:
+      static: function
+      dynamic: span of calls
     mbc:
-      - Cryptography::Generate Pseudo-random Sequence::Mersenne Twister [C0021.005]
+      - Cryptography::Generate Pseudo-random Sequence [C0021]
     examples:
       - D9630C174B8FF5C0AA26168DF523E63E:0x41A850
   features:

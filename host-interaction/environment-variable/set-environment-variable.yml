@@ -2,11 +2,17 @@ rule:
   meta:
     name: set environment variable
     namespace: host-interaction/environment-variable
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: call
+    mbc:
+      - Operating System::Environment Variable::Set Variable [C0034.001]
     examples:
-      - Practical Malware Analysis Lab 11-03.exe_:0x406580
+      - 0731679c5f99e8ee65d8b29a3cabfc6b:0x43EA81
   features:
     - or:
       - api: kernel32.SetEnvironmentStrings
       - api: kernel32.SetEnvironmentVariable
+      - api: System.Environment::SetEnvironmentVariable

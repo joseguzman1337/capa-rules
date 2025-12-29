@@ -2,9 +2,12 @@ rule:
   meta:
     name: read raw disk data
     namespace: host-interaction/file-system
-    author: william.ballenthin@fireeye.com
-    scope: file
+    authors:
+      - william.ballenthin@mandiant.com
+    scopes:
+      static: file
+      dynamic: file
   features:
     - or:
-      - string: \\\\.\\PhysicalDrive0
-      - string: '\\.\C:'
+      - string: "\\\\.\\PhysicalDrive0"
+      - string: "\\\\.\\C:"

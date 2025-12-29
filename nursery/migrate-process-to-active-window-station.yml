@@ -2,9 +2,12 @@ rule:
   meta:
     name: migrate process to active window station
     namespace: host-interaction/gui/window-station
-    author: william.ballenthin@fireeye.com
+    authors:
+      - william.ballenthin@mandiant.com
     description: set process to the active window station so it can receive GUI events. commonly seen in keyloggers.
-    scope: function
+    scopes:
+      static: function
+      dynamic: span of calls
     references:
       - https://www.installsetupconfig.com/win32programming/windowstationsdesktops13_1.html
       - https://brianbondy.com/blog/100/understanding-windows-at-a-deeper-level-sessions-window-stations-and-desktops

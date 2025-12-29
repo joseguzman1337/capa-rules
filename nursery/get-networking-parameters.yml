@@ -2,8 +2,11 @@ rule:
   meta:
     name: get networking parameters
     namespace: host-interaction/network
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: call
     att&ck:
       - Discovery::System Network Configuration Discovery [T1016]
   features:

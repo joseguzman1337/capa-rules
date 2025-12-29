@@ -2,8 +2,11 @@ rule:
   meta:
     name: packed with generic packer
     namespace: anti-analysis/packer/generic
-    author: william.ballenthin@fireeye.com
-    scope: function
+    authors:
+      - william.ballenthin@mandiant.com
+    scopes:
+      static: function
+      dynamic: unsupported
     att&ck:
       - Defense Evasion::Obfuscated Files or Information::Software Packing [T1027.002]
     mbc:

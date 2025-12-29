@@ -2,8 +2,14 @@ rule:
   meta:
     name: delete file
     namespace: host-interaction/file-system/delete
-    author: moritz.raabe@fireeye.com
-    scope: function
+    authors:
+      - moritz.raabe@mandiant.com
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: span of calls
+    mbc:
+      - File System::Delete File [C0047]
     examples:
       - 946A99F36A46D335DEC080D9A4371940:0x100015F0
       # MoveFileEx
@@ -18,12 +24,26 @@ rule:
       - api: ZwDeleteFile
       - api: remove
       - api: _wremove
+      - api: System.IO.File::Delete
+      - api: System.IO.FileSystemInfo::Delete
+      # static
       - basic block:
         - and:
           - number: 3 = FO_DELETE
           - or:
             - api: kernel32.SHFileOperation
       - basic block:
+        - and:
+          - number: 4 = MOVEFILE_DELAY_UNTIL_REBOOT
+          - number: 0 = NULL
+          - api: MoveFileEx
+      # dynamic
+      - call:
+        - and:
+          - number: 3 = FO_DELETE
+          - or:
+            - api: kernel32.SHFileOperation
+      - call:
         - and:
           - number: 4 = MOVEFILE_DELAY_UNTIL_REBOOT
           - number: 0 = NULL

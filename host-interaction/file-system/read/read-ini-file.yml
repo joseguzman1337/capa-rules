@@ -2,10 +2,14 @@ rule:
   meta:
     name: read .ini file
     namespace: host-interaction/file-system/read
-    author:
+    authors:
       - "@_re_fox"
-      - michael.hunhoff@fireeye.com
-    scope: function
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: span of calls
+    mbc:
+      - File System::Read File [C0051]
     examples:
       - 1d8fd13c890060464019c0f07b928b1a:0x401070
       - E6234FB98F17201C232F4502015B47B3:0x701312FA

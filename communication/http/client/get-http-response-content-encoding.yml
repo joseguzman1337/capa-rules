@@ -2,8 +2,11 @@ rule:
   meta:
     name: get HTTP response content encoding
     namespace: communication/http/client
-    author: matthew.williams@fireeye.com
-    scope: basic block
+    authors:
+      - matthew.williams@mandiant.com
+    scopes:
+      static: basic block
+      dynamic: call
     mbc:
       - Communication::HTTP Communication::Get Response [C0002.017]
     examples:

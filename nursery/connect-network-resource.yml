@@ -2,9 +2,12 @@ rule:
   meta:
     name: connect network resource
     namespace: communication/http
-    author: michael.hunhoff@fireeye.com
+    authors:
+      - michael.hunhoff@mandiant.com
     description: connect to disk or print resource
-    scope: function
+    scopes:
+      static: function
+      dynamic: span of calls
   features:
     - and:
       - or:

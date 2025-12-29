@@ -2,8 +2,11 @@ rule:
   meta:
     name: enumerate disk volumes
     namespace: host-interaction/hardware/storage
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: span of calls
     att&ck:
       - Discovery::System Information Discovery [T1082]
   features:

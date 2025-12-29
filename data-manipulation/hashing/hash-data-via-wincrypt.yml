@@ -2,8 +2,11 @@ rule:
   meta:
     name: hash data via WinCrypt
     namespace: data-manipulation/hashing
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: span of calls
     mbc:
       - Cryptography::Cryptographic Hash [C0029]
     examples:
@@ -13,6 +16,13 @@ rule:
       - api: advapi32.CryptHashData
       - optional:
         - basic block:
+          - and:
+            - api: advapi32.CryptGetHashParam
+            - or:
+              - number: 1 = HP_ALGID
+              - number: 2 = HP_HASHVAL
+              - number: 4 = HP_HASHSIZE
+        - call:
           - and:
             - api: advapi32.CryptGetHashParam
             - or:

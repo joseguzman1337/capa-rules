@@ -2,8 +2,11 @@ rule:
   meta:
     name: log keystrokes
     namespace: collection/keylog
-    author: moritz.raabe@fireeye.com
-    scope: function
+    authors:
+      - moritz.raabe@mandiant.com
+    scopes:
+      static: function
+      dynamic: span of calls
     att&ck:
       - Collection::Input Capture::Keylogging [T1056.001]
     examples:

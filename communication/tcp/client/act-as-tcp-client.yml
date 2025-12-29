@@ -2,12 +2,17 @@ rule:
   meta:
     name: act as TCP client
     namespace: communication/tcp/client
-    author: william.ballenthin@fireeye.com
-    scope: function
+    authors:
+      - william.ballenthin@mandiant.com
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: span of calls
     mbc:
       - Communication::Socket Communication::TCP Client [C0001.008]
     examples:
       - Practical Malware Analysis Lab 01-01.dll_:0x10001010
   features:
-    - and:
+    - or:
       - match: connect TCP socket
+      - api: System.Net.Sockets.TcpClient::ctor

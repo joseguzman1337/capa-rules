@@ -2,8 +2,11 @@ rule:
   meta:
     name: initialize hashing via WinCrypt
     namespace: data-manipulation/hashing
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: span of calls
   features:
     - and:
       - api: advapi32.CryptCreateHash

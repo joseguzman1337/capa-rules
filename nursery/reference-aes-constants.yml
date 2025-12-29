@@ -2,8 +2,11 @@ rule:
   meta:
     name: reference AES constants
     namespace: data-manipulation/encryption/aes
-    author: william.ballenthin@fireeye.com
-    scope: function
+    authors:
+      - william.ballenthin@mandiant.com
+    scopes:
+      static: function
+      dynamic: unsupported  # requires bytes features
     att&ck:
       - Defense Evasion::Obfuscated Files or Information [T1027]
   features:

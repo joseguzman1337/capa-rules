@@ -2,8 +2,11 @@ rule:
   meta:
     name: set global application hook
     namespace: host-interaction/gui
-    author: michael.hunhoff@fireeye.com
-    scope: basic block
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: basic block
+      dynamic: call
   features:
     - and:
       - api: user32.SetWindowsHookEx

@@ -2,8 +2,11 @@ rule:
   meta:
     name: modify access privileges
     namespace: host-interaction/process/modify
-    author: moritz.raabe@fireeye.com
-    scope: function
+    authors:
+      - moritz.raabe@mandiant.com
+    scopes:
+      static: instruction
+      dynamic: call
     att&ck:
       - Privilege Escalation::Access Token Manipulation [T1134]
     examples:
@@ -11,6 +14,3 @@ rule:
   features:
     - and:
       - api: advapi32.AdjustTokenPrivileges
-      - optional:
-        - or:
-          - api: advapi32.LookupPrivilegeValue

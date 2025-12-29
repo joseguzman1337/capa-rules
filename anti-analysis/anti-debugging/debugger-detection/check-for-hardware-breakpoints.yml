@@ -2,8 +2,11 @@ rule:
   meta:
     name: check for hardware breakpoints
     namespace: anti-analysis/anti-debugging/debugger-detection
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: unsupported  # requires offset, mnemonic features
     mbc:
       - Anti-Behavioral Analysis::Debugger Detection::Hardware Breakpoints [B0001.005]
     references:

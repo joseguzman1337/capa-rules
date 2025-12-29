@@ -2,8 +2,11 @@ rule:
   meta:
     name: contain a thread local storage (.tls) section
     namespace: executable/pe/section/tls
-    author: michael.hunhoff@fireeye.com
-    scope: file
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: file
+      dynamic: file
     examples:
       - Practical Malware Analysis Lab 16-02.exe_
   features:

@@ -2,8 +2,11 @@ rule:
   meta:
     name: get Explorer PID
     namespace: host-interaction/process/list
-    author: michael.hunhoff@fireeye.com
-    scope: basic block
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: basic block
+      dynamic: span of calls
     att&ck:
       - Discovery::Process Discovery [T1057]
     references:

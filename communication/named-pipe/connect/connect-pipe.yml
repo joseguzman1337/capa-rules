@@ -2,8 +2,12 @@ rule:
   meta:
     name: connect pipe
     namespace: communication/named-pipe/connect
-    author: moritz.raabe@fireeye.com
-    scope: function
+    authors:
+      - moritz.raabe@mandiant.com
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: call
     mbc:
       - Communication::Interprocess Communication::Connect Pipe [C0003.002]
     examples:
@@ -12,3 +16,7 @@ rule:
   features:
     - or:
       - api: kernel32.ConnectNamedPipe
+      - api: kernel32.CallNamedPipe
+        description: connect, read, write from pipe in single operation
+      - api: System.IO.Pipes.NamedPipeClientStream::Connect
+      - api: System.IO.Pipes.NamedPipeClientStream::ConnectAsync

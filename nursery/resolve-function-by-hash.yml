@@ -2,13 +2,15 @@ rule:
   meta:
     name: resolve function by hash
     namespace: linking/runtime-linking
-    author: william.ballenthin@fireeye.com
-    scope: function
+    authors:
+      - william.ballenthin@mandiant.com
+    scopes:
+      static: function
+      dynamic: span of calls
     att&ck:
-      - Execution::Shared Modules [T1129]
-    examples:
+      - Defense Evasion::Obfuscated Files or Information::Indicator Removal from Tools [T1027.005]
     references:
-      - https://www.fireeye.com/blog/threat-research/2012/11/precalculated-string-hashes-reverse-engineering-shellcode.html
+      - https://www.mandiant.com/resources/precalculated-string-hashes-reverse-engineering-shellcode
       - https://pastebin.com/ci5XYW4P
   features:
     - or:

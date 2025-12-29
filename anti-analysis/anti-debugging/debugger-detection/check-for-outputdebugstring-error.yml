@@ -2,8 +2,11 @@ rule:
   meta:
     name: check for OutputDebugString error
     namespace: anti-analysis/anti-debugging/debugger-detection
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: basic block
+      dynamic: span of calls
     mbc:
       - Anti-Behavioral Analysis::Debugger Detection::OutputDebugString [B0001.016]
     examples:

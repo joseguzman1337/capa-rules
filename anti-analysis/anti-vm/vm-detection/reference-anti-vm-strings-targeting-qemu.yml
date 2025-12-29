@@ -2,8 +2,11 @@ rule:
   meta:
     name: reference anti-VM strings targeting Qemu
     namespace: anti-analysis/anti-vm/vm-detection
-    author: michael.hunhoff@fireeye.com
-    scope: file
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: file
+      dynamic: file
     att&ck:
       - Defense Evasion::Virtualization/Sandbox Evasion::System Checks [T1497.001]
     mbc:
@@ -15,6 +18,6 @@ rule:
   features:
     - or:
       - string: /Qemu/i
-      - string: /qemu-ga.exe/i
+      - string: /qemu-ga\.exe/i
       - string: /BOCHS/i
-      - string: /BXPC/i
+      - string: /^BXPC/i

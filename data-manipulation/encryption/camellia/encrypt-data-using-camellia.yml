@@ -1,9 +1,12 @@
 rule:
   meta:
-    name: encrypt-data-using-camellia
+    name: encrypt data using Camellia
     namespace: data-manipulation/encryption/camellia
-    author: '@_re_fox'
-    scope: basic block
+    authors:
+      - '@_re_fox'
+    scopes:
+      static: basic block
+      dynamic: unsupported  # requires bytes features
     att&ck:
       - Defense Evasion::Obfuscated Files or Information [T1027]
     mbc:
@@ -43,7 +46,7 @@ rule:
         - and:
           - string: /A09E667F3BCC908B/i
             description: sigma1_str
-          - string: /B67AE8584CAA73B
+          - string: "/B67AE8584CAA73B"
             description: sigma2_str
           - string: /C6EF372FE94F82BE/i
             description: sigma3_str

@@ -2,8 +2,11 @@ rule:
   meta:
     name: compiled from EPL
     namespace: compiler/epl
-    author: william.ballenthin@fireeye.com
-    scope: file
+    authors:
+      - william.ballenthin@mandiant.com
+    scopes:
+      static: file
+      dynamic: file
     references:
       - https://www.hexacorn.com/blog/2019/02/13/pe-files-and-the-easy-programming-language-epl/
   features:
@@ -14,7 +17,6 @@ rule:
       - string: "Failed to allocate memory!"
       - string: "/ MADE BY E COMPILER – WUTAO"
       - section: .ecode
-      - section: .edata
       - import: krnln.fne
       - import: krnln.fnr
       - import: eAPI.fne

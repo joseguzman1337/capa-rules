@@ -2,8 +2,11 @@ rule:
   meta:
     name: check for time delay via GetTickCount
     namespace: anti-analysis/anti-debugging/debugger-detection
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: unsupported  # requires mnemonic features
     mbc:
       - Anti-Behavioral Analysis::Debugger Detection::Timing/Delay Check GetTickCount [B0001.032]
     examples:
@@ -11,3 +14,7 @@ rule:
   features:
     - and:
       - count(api(kernel32.GetTickCount)): 2 or more
+      - basic block:
+        - and:
+          - mnemonic: sub
+          - mnemonic: cmp

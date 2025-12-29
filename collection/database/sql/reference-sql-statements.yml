@@ -2,8 +2,11 @@ rule:
   meta:
     name: reference SQL statements
     namespace: collection/database/sql
-    author: william.ballenthin@fireeye.com
-    scope: function
+    authors:
+      - william.ballenthin@mandiant.com
+    scopes:
+      static: function
+      dynamic: call
     att&ck:
       - Collection::Data from Information Repositories [T1213]
     examples:

@@ -2,12 +2,14 @@ rule:
   meta:
     name: reference Verisign DNS server
     namespace: communication/dns
-    author: william.ballenthin@fireeye.com
-    scope: function
+    authors:
+      - william.ballenthin@mandiant.com
+    scopes:
+      static: function
+      dynamic: span of calls
     references:
       - https://www.techradar.com/news/best-dns-server
-    examples:
   features:
     - or:
-      - string: 64.6.64.6
-      - string: 64.6.65.6
+      - string: "64.6.64.6"
+      - string: "64.6.65.6"

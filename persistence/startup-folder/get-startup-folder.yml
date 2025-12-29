@@ -2,8 +2,11 @@ rule:
   meta:
     name: get startup folder
     namespace: persistence/startup-folder
-    author: matthew.williams@fireeye.com
-    scope: basic block
+    authors:
+      - matthew.williams@mandiant.com
+    scopes:
+      static: basic block
+      dynamic: call
     att&ck:
       - Persistence::Boot or Logon Autostart Execution::Registry Run Keys / Startup Folder [T1547.001]
     examples:

@@ -2,8 +2,11 @@ rule:
   meta:
     name: extract HTTP body
     namespace: communication/http/client
-    author: matthew.williams@fireeye.com
-    scope: function
+    authors:
+      - matthew.williams@mandiant.com
+    scopes:
+      static: function
+      dynamic: unsupported  # requires offset, bytes features
     mbc:
       - Communication::HTTP Communication::Extract Body [C0002.011]
     references:

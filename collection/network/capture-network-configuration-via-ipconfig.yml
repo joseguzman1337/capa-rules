@@ -2,8 +2,11 @@ rule:
   meta:
     name: capture network configuration via ipconfig
     namespace: collection/network
-    author: "@_re_fox"
-    scope: basic block
+    authors:
+      - "@_re_fox"
+    scopes:
+      static: basic block
+      dynamic: span of calls
     att&ck:
       - Discovery::System Network Configuration Discovery [T1016]
     examples:
@@ -14,6 +17,6 @@ rule:
       - api: msvcr100.system
       - optional:
         - and:
-          - string: ipconfig.txt
-          - string: /\[Windows IP Configuration\]/
+          - string: "ipconfig.txt"
+          - substring: "[Windows IP Configuration]"
             description: Arkei Stealer Filename and Banner

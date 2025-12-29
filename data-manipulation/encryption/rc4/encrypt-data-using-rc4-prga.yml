@@ -2,8 +2,11 @@ rule:
   meta:
     name: encrypt data using RC4 PRGA
     namespace: data-manipulation/encryption/rc4
-    author: moritz.raabe@fireeye.com
-    scope: function
+    authors:
+      - moritz.raabe@mandiant.com
+    scopes:
+      static: function
+      dynamic: unsupported  # requires characteristic, mnemonic, basicblock features
     att&ck:
       - Defense Evasion::Obfuscated Files or Information [T1027]
     mbc:
@@ -24,8 +27,8 @@ rule:
         - count(mnemonic(movzx)): 4 or more
       # should not call (many) functions
       - count(characteristic(calls from)): (0, 4)
-      # should not be too simple
-      - count(basic blocks): 4 or more
+      # should not be too simple or too complex (50 is picked by intuition)
+      - count(basic blocks): (4, 50)
       - match: contain loop
       - optional:
         - or:

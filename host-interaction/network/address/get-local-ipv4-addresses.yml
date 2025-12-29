@@ -2,8 +2,13 @@ rule:
   meta:
     name: get local IPv4 addresses
     namespace: host-interaction/network/address
-    author: moritz.raabe@fireeye.com
-    scope: function
+    authors:
+      - moritz.raabe@mandiant.com
+      - joakim@intezer.com
+      - mehunhoff@google.com
+    scopes:
+      static: function
+      dynamic: call
     att&ck:
       - Discovery::System Network Configuration Discovery [T1016]
     examples:
@@ -11,6 +16,7 @@ rule:
       - 4C0553285D724DCAF5909924B4E3E90A:0x402010
   features:
     - or:
+      - api: getsockname
       - and:
         - api: GetAdaptersInfo
         - offset: 0x1B0 = IP_ADAPTER_INFO.IpAddressList.IpAddress

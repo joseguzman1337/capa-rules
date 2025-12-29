@@ -2,14 +2,17 @@ rule:
   meta:
     name: encrypt data using blowfish
     namespace: data-manipulation/encryption/blowfish
-    author: "@_re_fox"
-    scope: basic block
+    authors:
+      - "@_re_fox"
+    scopes:
+      static: basic block
+      dynamic: unsupported  # requires bytes features
     att&ck:
       - Defense Evasion::Obfuscated Files or Information [T1027]
     mbc:
       - Defense Evasion::Obfuscated Files or Information::Encryption-Standard Algorithm [E1027.m05]
       - Cryptography::Encrypt Data::Blowfish [C0027.002]
-    examples: 
+    examples:
       - 0761142efbda6c4b1e801223de723578:0x653E19E5
   features:
     - or:

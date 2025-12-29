@@ -2,8 +2,11 @@ rule:
   meta:
     name: send HTTP request with Host header
     namespace: communication/http
-    author: anamaria.martinezgom@fireeye.com
-    scope: function
+    authors:
+      - anamaria.martinezgom@mandiant.com
+    scopes:
+      static: function
+      dynamic: span of calls
   features:
     - and:
       - match: send HTTP request

@@ -1,9 +1,12 @@
 rule:
   meta:
-    name: check for windows sandbox via registry
+    name: check for Windows sandbox via registry
     namespace: anti-analysis/anti-vm/vm-detection
-    author: "@_re_fox"
-    scope: function
+    authors:
+      - "@_re_fox"
+    scopes:
+      static: function
+      dynamic: span of calls
     att&ck:
       - Defense Evasion::Virtualization/Sandbox Evasion::System Checks [T1497.001]
     mbc:
@@ -16,5 +19,5 @@ rule:
     - and:
       - api: RegOpenKeyEx
       - api: RegEnumValue
-      - string: /\\Microsoft\\Windows\\CurrentVersion\\RunOnce/
+      - substring: "\\Microsoft\\Windows\\CurrentVersion\\RunOnce"
       - string: /wmic useraccount where \"name='WDAGUtilityAccount'\"/i

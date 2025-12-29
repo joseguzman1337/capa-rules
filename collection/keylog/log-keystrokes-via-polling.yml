@@ -2,8 +2,11 @@ rule:
   meta:
     name: log keystrokes via polling
     namespace: collection/keylog
-    author: michael.hunhoff@fireeye.com
-    scope: function
+    authors:
+      - michael.hunhoff@mandiant.com
+    scopes:
+      static: function
+      dynamic: call
     att&ck:
       - Collection::Input Capture::Keylogging [T1056.001]
     mbc:

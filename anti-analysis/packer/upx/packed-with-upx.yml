@@ -2,8 +2,11 @@ rule:
   meta:
     name: packed with UPX
     namespace: anti-analysis/packer/upx
-    author: william.ballenthin@fireeye.com
-    scope: file
+    authors:
+      - william.ballenthin@mandiant.com
+    scopes:
+      static: file
+      dynamic: file
     att&ck:
       - Defense Evasion::Obfuscated Files or Information::Software Packing [T1027.002]
     mbc:
@@ -13,5 +16,12 @@ rule:
       - Practical Malware Analysis Lab 01-02.exe_:0x0401000
   features:
     - or:
-      - section: UPX0
-      - section: UPX1
+      - and:
+        - format: pe
+        - or:
+          - section: UPX0
+          - section: UPX1
+      - and:
+        - format: elf
+        - or:
+          - string: "UPX!"

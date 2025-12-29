@@ -2,8 +2,11 @@ rule:
   meta:
     name: hash data using MD4
     namespace: data-manipulation/hashing/md4
-    author: anamaria.martinezgom@fireeye.com
-    scope: basic block
+    authors:
+      - anamaria.martinezgom@mandiant.com
+    scopes:
+      static: basic block
+      dynamic: call
   features:
     - and:
       - number: 0x8002 = CALG_MD4
